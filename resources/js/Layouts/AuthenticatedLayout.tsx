@@ -5,6 +5,7 @@ import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link } from '@inertiajs/react';
 import { User } from '@/types';
+import { ModeToggle } from '@/Components/ModeToggle';
 
 export default function Authenticated({ user, header, children }: PropsWithChildren<{ user: User, header?: ReactNode }>) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
@@ -25,10 +26,31 @@ export default function Authenticated({ user, header, children }: PropsWithChild
                                 <NavLink href={route('dashboard')} active={route().current('dashboard')}>
                                     Dashboard
                                 </NavLink>
+                                <NavLink
+                                    href={route("project.index")}
+                                    active={route().current("project.index")}
+                                    >
+                                    Projects
+                                </NavLink>
+                                <NavLink
+                                    href={route("task.index")}
+                                    active={route().current("task.index")}
+                                    >
+                                    Tasks
+                                </NavLink>
+                                <NavLink
+                                    href={route("user.index")}
+                                    active={route().current("user.index")}
+                                    >
+                                    Users
+                                </NavLink>
                             </div>
                         </div>
 
                         <div className="hidden sm:flex sm:items-center sm:ms-6">
+                            <div className="ms-3 relative">
+                                <ModeToggle />
+                            </div>
                             <div className="ms-3 relative">
                                 <Dropdown>
                                     <Dropdown.Trigger>

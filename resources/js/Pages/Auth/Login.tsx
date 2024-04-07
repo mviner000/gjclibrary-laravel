@@ -41,7 +41,7 @@ export default function Login({ status, canResetPassword }: { status?: string, c
                         type="email"
                         name="email"
                         value={data.email}
-                        className="mt-1 block w-full"
+                        className="mt-1 block w-full text-emerald-600"
                         autoComplete="username"
                         isFocused={true}
                         onChange={(e) => setData('email', e.target.value)}
@@ -58,7 +58,7 @@ export default function Login({ status, canResetPassword }: { status?: string, c
                         type="password"
                         name="password"
                         value={data.password}
-                        className="mt-1 block w-full"
+                        className="mt-1 block w-full text-emerald-600"
                         autoComplete="current-password"
                         onChange={(e) => setData('password', e.target.value)}
                     />
@@ -78,15 +78,24 @@ export default function Login({ status, canResetPassword }: { status?: string, c
                 </div>
 
                 <div className="flex items-center justify-end mt-4">
-                    {canResetPassword && (
+                    <div className="flex items-center justify-between">
                         <Link
-                            href={route('password.request')}
+                            href={route('register')}
                             className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
-                            Forgot your password?
+                            Sign Up
                         </Link>
-                    )}
-
+                        
+                        {canResetPassword && (
+                            <Link
+                                href={route('password.request')}
+                                className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ml-4"
+                            >
+                                Forgot your password?
+                            </Link>
+                        )}
+                    </div>
+                    
                     <PrimaryButton className="ms-4" disabled={processing}>
                         Log in
                     </PrimaryButton>
