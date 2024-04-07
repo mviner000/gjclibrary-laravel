@@ -4,6 +4,8 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Author;
+use App\Models\Categories;
+use App\Models\Department;
 use App\Models\Tag;
 
 /**
@@ -36,8 +38,8 @@ class BookFactory extends Factory
             // 'author_id' => fake()->numberBetween($min = 1, $max = 100),
             'authors' => Author::pluck('id')->random(fake()->numberBetween($minTags = 1, $maxTags = 3)),
             'tags' => Tag::pluck('id')->random(fake()->numberBetween($minTags = 1, $maxTags = 10)),
-            'categories' => fake()->numberBetween($min = 1, $max = 100),
-            'departments' => fake()->numberBetween($min = 1, $max = 6),
+            'categories' => Categories::pluck('id')->random(fake()->numberBetween($minTags = 1, $maxTags = 2)),
+            'departments' => Department::pluck('id')->random(fake()->numberBetween($minTags = 1, $maxTags = 1)),
             'cabinet_number' => fake()->numberBetween($min = 1, $max = 6),
             'cabinet_side' => fake()->randomElement(['Left', 'Right']),
             'status' => fake()->randomElement(['Verified', 'Unverified', 'Phased Out']),
